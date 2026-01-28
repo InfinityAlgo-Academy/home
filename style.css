@@ -30,6 +30,8 @@ body {
     overflow-x: hidden;
     direction: rtl;
     /* Right to Left for Arabic */
+    padding-top: 70px;
+    /* Compensate for fixed header */
 }
 
 a {
@@ -43,7 +45,6 @@ ol {
     list-style: none;
 }
 
-/* Header */
 /* Header & Navigation */
 .site-header {
     position: fixed;
@@ -62,6 +63,9 @@ ol {
     justify-content: space-between;
     align-items: center;
     height: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
 
 /* Logo */
@@ -216,6 +220,51 @@ ol {
     visibility: visible;
 }
 
+/* Hero Section */
+.hero {
+    position: relative;
+    height: calc(100vh - 70px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+    overflow: hidden;
+    margin-top: -70px;
+    /* Pull back up because of body padding, but hero needs to be full screen under header? No, header is glass. */
+    /* Actually, if we want glass header over hero, we should NOT pad body, and just let hero be top 0.
+       But user said header 'ruined everything'. The image shows header blocking content.
+       Let's stick to Safe approach: Body has padding, Hero fits in remaining space.
+    */
+    margin-top: 0;
+}
+
+/* Wait, if Body has padding-top: 70px, then Hero starts AFTER 70px.
+   If Hero height is calc(100vh - 70px), it fills the rest of the screen exactly.
+   This prevents overlap.
+*/
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('assets/hero.png') no-repeat center center/cover;
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(11, 14, 20, 0.7) 0%, rgba(11, 14, 20, 1) 100%);
+    z-index: -1;
+}
+
 .hero-content {
     max-width: 900px;
     z-index: 1;
@@ -245,6 +294,25 @@ ol {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+    text-decoration: none;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
 }
 
 .btn-outline {
@@ -661,65 +729,25 @@ footer {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-    .nav-wrapper {
-        padding: 0.8rem 1.5rem;
+@media (max-width: 900px) {
+    .desktop-nav {
+        display: none;
     }
 
-    .logo {
-        font-size: 1.3rem;
-        z-index: 1001;
+    .desktop-cta {
+        display: none !important;
     }
 
     .menu-toggle {
         display: block;
-        z-index: 1001;
     }
 
-    .desktop-only {
-        display: none !important;
-    }
-
-    .mobile-only {
-        display: inline-flex !important;
-        margin-top: 1rem;
-        width: 100%;
-        justify-content: center;
-    }
-
-    .nav-links {
-        display: flex;
-        position: fixed;
-        top: 0;
-        right: -100%;
-        width: 75%;
-        height: 100vh;
-        background: #0b0e14;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: right 0.4s ease;
-        z-index: 1000;
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
-        border-left: 1px solid rgba(255, 255, 255, 0.05);
-        gap: 2rem;
-    }
-
-    .nav-links.active {
-        right: 0;
-    }
-
-    .nav-links a {
-        font-size: 1.2rem;
-    }
-
-    .btn-primary {
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
+    .header-inner {
+        padding: 0 1rem;
     }
 
     .hero h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
 
     .details-container {
@@ -736,12 +764,8 @@ footer {
         padding: 4rem 1.5rem;
     }
 
-    .feature-card {
-        padding: 1.5rem;
-    }
-
     .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 1rem;
     }
 
