@@ -51,54 +51,7 @@ header {
     z-index: 1000;
 }
 
-.top-bar {
-    background: #050608;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 0.5rem 0;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-}
 
-.top-bar-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.top-bar-info {
-    display: flex;
-    gap: 1.5rem;
-    align-items: center;
-}
-
-.top-bar-info a,
-.top-bar-info span {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.3s;
-}
-
-.top-bar-info a:hover {
-    color: var(--primary);
-}
-
-.top-bar-links {
-    display: flex;
-    gap: 1rem;
-}
-
-.top-bar-links a {
-    color: var(--text-muted);
-    transition: color 0.3s;
-}
-
-.top-bar-links a:hover {
-    color: var(--primary);
-}
 
 .nav-container {
     background: rgba(11, 14, 20, 0.85);
@@ -581,7 +534,28 @@ footer {
 
 .footer-content p {
     color: var(--text-muted);
+    margin-bottom: 1.5rem;
+}
+
+.footer-contact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
     margin-bottom: 2rem;
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.footer-contact div,
+.footer-contact a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-contact a:hover {
+    color: var(--primary);
 }
 
 .socials {
