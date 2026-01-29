@@ -1,0 +1,38 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://infinityalgoacademy.net/sitemap.xml
+Sitemap: https://infinityalgoacademy.net/fluent-products-sitemap.xml
+
+# Crawl-delay
+Crawl-delay: 1
+
+# Disallow admin and private areas
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/themes/
+Disallow: /cgi-bin/
+Disallow: /*.php$
+Disallow: /*.inc$
+Disallow: /*.gz$
+
+# Allow specific important files
+Allow: /wp-content/uploads/
+Allow: /wp-content/themes/*/css/
+Allow: /wp-content/themes/*/js/
+Allow: /wp-content/themes/*/images/
+
+# Block bad bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
